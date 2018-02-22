@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>個人BMI值計算及記錄</title>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<div class="wrapper">
+		<!-- Start header -->
+		<header class="header">
+			<div class="header-logo-container u-mgl-160">
+				<div class="header-logo" style="background-image: url(images/BMICLogo.png);"></div>
+			</div>
+			<form action="" class="bmiInput">
+				<label for="height" class="bmiInput__height u-pdb-24">身高 cm<br><input type="text" name="height" id="height" class="inputValue u-mgt-4" placeholder="請輸入身高"></label>
+				<label for="weight" class="bmiInput__weight">體重 kg<br><input type="text" name="weight" id="weight" class="inputValue u-mgt-4" placeholder="請輸入體重"></label>
+				<p class="hint text-negative"></p>
+			</form>
+			<div class="submit u-mgr-160" id="submit">
+				<a class="submitText">看結果</a>
+			</div>
+		</header>
+		<!-- End header -->
+		<!-- Start main -->
+		<section class="main">
+			<p class="title">BMI記錄</p>
+			<ul id="BMIRecordsList"></ul>
+		</section>
+		<!-- End main -->
+		<!-- Start footer -->
+		<footer class="footer">
+			<div class="footer-logo-container">
+				<div class="footer-logo" style="background-image: url(images/BMICLogo-gray.png);"></div>
+			</div>
+		</footer>
+		<!-- End footer -->
+	</div>
+
+	<!-- Start js -->
+	<script src="js/cal.js"></script>
+</body>
+</html>

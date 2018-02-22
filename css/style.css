@@ -1,0 +1,342 @@
+/**
+ * Page name:個人BMI值計算及記錄
+ * Copyright 2018
+ * Author:Chen Po-Hung
+ * Licensed 
+ */
+/*------------------------------------*\
+    Content
+\*------------------------------------*/
+/**
+ * Content............You're reading it!
+ * Global...............Set common style
+ * Layout...........Set grid
+ * Components...........Set components styles
+ * Utilities...........Set for utilities
+ */
+
+/*****************\
+      Glogal
+\*****************/
+* {
+	position: relative;
+	box-sizing: border-box;
+	outline: none;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+	font-family: 微軟正黑體;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	padding: 0;
+	margin: 0;
+}
+
+div {
+	margin: 0;
+	padding: 0;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/*****************\
+      Layout
+\*****************/
+
+
+/*****************\
+      Module
+\*****************/
+
+
+/*****************\
+     Components
+\*****************/
+/*wrapper*/
+.wrapper {
+	width: 1024px;
+	margin: 0 auto;
+}
+
+/*header*/
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	width: 100%;
+	height: 300px;
+	background-color: #424242;
+}
+
+.header-logo-container {
+	width: 117px;
+}
+
+.header-logo-container::before {
+	content: "";
+	display: block;
+	width: 100%;
+	padding-top: 100%;
+}
+
+.header-logo {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.bmiInput {
+	display: block;
+}
+
+.bmiInput__height, .bmiInput__weight {
+	display: block;
+	font-size: 18px;
+	color: #ffd366;
+}
+
+#height, #weight {
+	background: rgba(255, 255, 255, 0.18);
+	border: 2px solid #ffd366;
+	border-radius: 10px;
+	font-size: 24px;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.inputValue {
+	width: 250px;
+	height: 40px;
+	padding: 0 8px;
+}
+
+.inputValue {
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.text-negative {
+	color: red;
+}
+
+.submit {
+	width: 120px;
+	height: 120px;
+	/*padding-top: 30px;*/
+
+	border-radius: 50%;
+	/*border: 6px solid #86d73e;*/
+	text-align: center;
+	background-color: #ffd366;
+	cursor: pointer;
+}
+
+.submit:hover {
+	box-shadow: 0 1px 6px 3px rgba(255, 195, 49, 0.64);
+}
+
+.submit:active {
+	box-shadow: 0 0 0 0;
+	background-color: #dea921;
+}
+
+.submitText {
+	display: block;
+
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 120px;
+	color: #424242;
+
+	transition: all 0.3s;
+}
+
+.submit.change {
+	/*font-size: 32px;
+	line-height: 104px;*/
+}
+
+.resultTextBMI {
+	display: block;
+	font-size: 14px;
+	font-weight: 700;
+}
+
+.resultText {
+	position: absolute;
+	top: 50%;
+	right: -120px;
+	transform: translate(-50%, -50%);
+	font-size: 32px;
+	font-weight: 700;
+}
+
+.icon-container {
+	position: absolute;
+	bottom: -3px;
+	right: -3px;
+	width: 30px;
+	border: 3px solid #424242;
+	border-radius: 50%;
+	background-color: #86d73e;
+}
+
+.icon-container::before {
+	content: "";
+	display: block;
+	padding-top: 100%;
+}
+
+.icon {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 80%;
+	height: 80%;
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+/*main*/
+.main {
+	width: 100%;
+	padding: 48px 200px 74px;
+	text-align: center;
+	background-color: #eee;
+}
+
+.title {
+	margin-bottom: 36px;
+	font-weight: 700;
+	font-size: 24px;
+	color: #424242;
+}
+
+.data {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	height: 62px;
+	margin-top: 16px;
+	padding: 0 12px;
+	background-color: #fff;
+}
+
+.deleteRecord {
+	display: block;
+	position: absolute;
+	left: 0;
+	width: 7px;
+	height: 100%;
+}
+
+.record {
+	display: flex;
+	align-items: center;
+}
+
+/*deleteRecord color*/
+.ideal {
+	background-color: #86d73f;
+	box-shadow: 3px 0 2px 0 rgba(133, 215, 63, 0.29);
+}
+
+.underweight {
+	background-color: #31baf9;
+	box-shadow: 3px 0 2px 0 rgba(49, 186, 249, 0.29);
+}
+
+.overweight {
+	background-color: #ff982d;
+	box-shadow: 2px 0 3px 0 rgba(255, 152, 45, 0.29);
+}
+
+.mild-obesity {
+	background-color: #ff6c02;
+	box-shadow: 2px 0 3px 0 rgba(255, 108, 2, 0.29);
+}
+
+.moderate-obesity {
+	background-color: #ff6c03;
+	box-shadow: 2px 0 3px 0 rgba(255, 108, 3, 0.29);
+}
+
+.severe-obesity {
+	background-color: #ff1200;
+	box-shadow: 2px 0 3px 0 rgba(255, 18, 0, 0.29);
+}
+
+
+/*footer*/
+.footer {
+	width: 100%;
+	height: 90px;
+	padding-top: 17px;
+	text-align: center;
+	background-color: #ffd366;
+}
+
+.footer-logo-container {
+	width: 55px;
+	margin: 0 auto;
+}
+
+.footer-logo-container::before {
+	content: "";
+	display: block;
+	width: 100%;
+	padding-top: 100%;
+}
+
+.footer-logo {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+/*****************\
+     Utilities
+\*****************/
+/*margin*/
+.u-mgt-4{margin-top: 4px !important;}
+.u-mgb-24{margin-bottom: 24px !important;}
+.u-mgr-160{margin-right: 160px !important;}
+.u-mgl-8{margin-left: 8px !important;}
+.u-mgl-160{margin-left: 160px !important;}
+
+/*padding*/
+.u-pd-24{padding: 24px !important;}
+.u-pdb-24{padding-bottom: 24px !important;}
+
+/*font-size*/
+.u-ftsize-12{font-size: 12px !important;}
+.u-ftsize-20{font-size: 20px !important;}
+.u-ftsize-32{font-size: 32px !important;}
