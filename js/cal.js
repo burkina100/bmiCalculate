@@ -147,7 +147,7 @@
 		// 存入資料
 		localStorage.setItem("bmiRecord", JSON.stringify(recordData));
 		// 更改結果圖示
-		changeResult(bmiRecord);
+		// changeResult(bmiRecord);
 		// 更新頁面資料
 		updateList(recordData);
 	}
