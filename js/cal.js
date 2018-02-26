@@ -5,6 +5,8 @@
 	var recordData = JSON.parse(localStorage.getItem("bmiRecord")) || [];
 	// 更新頁面資料
 	updateList(recordData);
+	// bmi查詢結果原元素
+	var CalBtnText = document.querySelector(".submitText").cloneNode(true);
 
 	//監聽，驗證及更新
 	bmiCalBtn.addEventListener("click", function(e) {
@@ -22,7 +24,7 @@
 			hint.innerHTML = "請輸入身高及體重";
 			return;
 		}
-		if(!heightValue.match(/^\d{3}$/)){
+		if(!heightValue.match(/^[1-2]{1}\d{2}$/)){
 			hint.innerHTML = "身高輸入有誤，請重新輸入";
 			return;
 		}
@@ -41,6 +43,7 @@
 		// 清除輸入資訊
 		heightTextEl.value = "";
 		weightTextEl.value = "";
+		initialResult();
 	}, false);
 
 	
@@ -143,7 +146,25 @@
 		recordData.push(bmiRecord);
 		// 存入資料
 		localStorage.setItem("bmiRecord", JSON.stringify(recordData));
+		// 更改結果圖示
+		changeResult(bmiRecord);
 		// 更新頁面資料
 		updateList(recordData);
+	}
+
+	// 改變送出後圖示
+	function changeResult(bmiRecord) {
+		// bmiCalBtn
+		// 改變結果文字
+		var resultAEl = document.getElementById("submit");
+		resultAEl.className += " change";
+		resultAEl.textContent = bmiRecord.bmi;
+	}
+
+	// 回復送出圖示
+	function initialResult() {
+		console.log(CalBtnText);
+		console.log(bmiCalBtn);
+		// bmiCalBtn.innerHTML = CalBtnText;
 	}
 };
